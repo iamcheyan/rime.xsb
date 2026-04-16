@@ -1,0 +1,145 @@
+# 输入方案定义：基于 rime-ice 词库的纯原生全拼方案
+schema:
+  schema_id: pinyin
+  name: "拼音"
+  version: "2026-04-16"
+  dependencies:
+    - easy_en
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  - name: ascii_punct
+    reset: 0
+    states: [。，, ．，]
+  - name: zh_trad
+    reset: 0
+    states: [简体, 繁体]
+
+menu:
+  page_size: 6
+  select_keys: " 12345"
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - table_translator@easy_en
+    - history_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  initials: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  delimiter: " '"
+  auto_select: false
+  max_code_length: 0
+  use_space: false
+  algebra:
+    - erase/^hm$/
+    - erase/^m$/
+    - erase/^n$/
+    - erase/^ng$/
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - derive/^([nl])ve$/$1ue/
+    - derive/^([jqxy])u/$1v/
+    - derive/^([nl])ue$/$1ve/
+    - derive/^([jqxy])v/$1u/
+    - derive/([zcs])h(a|e|i|u|ai|ei|an|en|ou|uo|ua|un|ui|uan|uai|uang|ang|eng|ong)$/h$1$2/
+    - derive/([zcs])h([aeiu])$/$1$2h/
+    - derive/^([wghk])ai$/$1ia/
+    - derive/([wfghkz])ei$/$1ie/
+    - derive/([jqx])ie$/$1ei/
+    - derive/([rtypsdghklzcbnm])ao$/$1oa/
+    - derive/([ypfm])ou$/$1uo/
+    - derive/([wrtypsdfghklzcbnm])ang$/$1nag/
+    - derive/([wrtypsdfghklzcbnm])ang$/$1agn/
+    - derive/([wrtpsdfghklzcbnm])eng$/$1neg/
+    - derive/([wrtpsdfghklzcbnm])eng$/$1egn/
+    - derive/([qtypdjlxbnm])ing$/$1nig/
+    - derive/([qtypdjlxbnm])ing$/$1ign/
+    - derive/([rtysdghklzcn])ong$/$1nog/
+    - derive/([rtysdghklzcn])ong$/$1ogn/
+    - derive/([qtpdjlxbnm])iao$/$1ioa/
+    - derive/([qtpdjlxbnm])iao$/$1oia/
+    - derive/([rtsghkzc])ui$/$1iu/
+    - derive/([qjlxnm])iu$/$1ui/
+    - derive/([qjlxn])iang$/$1aing/
+    - derive/([qjlxn])iang$/$1inag/
+
+translator:
+  dictionary: pinyin
+  enable_user_dict: true
+  enable_sentence: true
+  enable_completion: true
+  sentence_over_completion: true
+  enable_encoder: true
+  encode_whole_phrase: true
+  max_phrase_length: 32
+  user_dict: pinyin
+  db_class: tabledb
+  initial_quality: 1.2
+  enable_preedit: false
+  preedit_format:
+    - xform/([jqxy])v/$1u/
+    - xform/([nl])v/$1v/
+    - xform/([nl])ue/$1ve/
+    - xform/(?<=[A-Z])\s(?=[A-Z])//
+
+easy_en:
+  dictionary: easy_en
+  enable_user_dict: false
+  enable_sentence: false
+  enable_completion: true
+  spelling_hints: 9
+  initial_quality: 0.9
+  comment_format:
+    - xform/^.+$//
+
+history_translator:
+  size: 1
+  initial_quality: 10000
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { when: has_menu, accept: Tab, send: Down }
+    - { when: has_menu, accept: "Shift+Tab", send: Up }
+    - { when: has_menu, accept: Up, send: Page_Up }
+    - { when: has_menu, accept: Down, send: Page_Down }
+    - { when: has_menu, accept: comma, send: Page_Up }
+    - { when: has_menu, accept: period, send: Page_Down }
+    - { accept: "Control+comma", select: .next, when: always }
+    - { accept: "Control+period", select: .next, when: always }
+    - { accept: "Shift+BackSpace", send: Escape, when: composing }
+
+punctuator:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    uppercase: ''
+
+simplifier:
+  opencc_config: s2t.json
+  option_name: zh_trad

@@ -10,7 +10,7 @@ NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 RIME_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-JP_DICT_DIR="$RIME_DIR/sbzr.chrome.extension/dicts.jp"
+JP_DICT_DIR="$RIME_DIR/dicts.jp"
 RAW_BASE_URL="https://raw.githubusercontent.com/lazyfoxchan/rime-jaroomaji/master"
 
 ROOT_FILES=(
@@ -83,14 +83,14 @@ ensure_jp_dicts() {
   for file in "${JP_DICT_FILES[@]}"; do
     local dest="$JP_DICT_DIR/$file"
     if [ -f "$dest" ]; then
-      log "$GREEN" "已存在: sbzr.chrome.extension/dicts.jp/$file"
+      log "$GREEN" "已存在: dicts.jp/$file"
       continue
     fi
 
     missing=$((missing + 1))
     log "$CYAN" "下载词典: $file"
     if download_file "$RAW_BASE_URL/$file" "$dest"; then
-      log "$GREEN" "下载成功: sbzr.chrome.extension/dicts.jp/$file"
+      log "$GREEN" "下载成功: dicts.jp/$file"
     else
       fail "下载失败: $file"
     fi

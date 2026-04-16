@@ -1,0 +1,18 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# pinyin 全拼主词典，词库来源于 https://github.com/iDvel/rime-ice
+#
+
+---
+name: pinyin
+version: "2026-04-16"
+sort: by_weight
+use_preset_vocabulary: false
+import_tables:
+  - dicts.cn/8105
+  - dicts.cn/base
+  - dicts.cn/ext
+  - dicts.cn/tencent
+  - dicts.cn/others
+...

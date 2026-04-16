@@ -1,5 +1,5 @@
 local SEP = "\31"
-local DB_NAME = "sbzr_mix_recent"
+local DB_NAME = "pinyin_mix_recent"
 local CACHE_LIMIT = 256
 local db_pool = db_pool or {}
 
