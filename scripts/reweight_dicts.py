@@ -4,8 +4,8 @@ import sys
 
 # 动态获取脚本所在目录，确保在任何地方运行都能定位到词典
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-# 词典目录相对于脚本的位置是 ../sbzr.chrome.extension/dicts
-DICTS_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "sbzr.chrome.extension", "dicts"))
+# 词典目录相对于脚本的位置是 ../resource/dicts
+DICTS_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "resource", "dicts"))
 
 # 权重设置
 CHAR_WEIGHT = 50000    # 单字基础权重

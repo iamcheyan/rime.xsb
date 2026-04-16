@@ -4,7 +4,7 @@
 config_version: '0.40'
 
 schema_list:
-  - schema: sbzr
+  - schema: pinyin
   - schema: jaroomaji
 
 switcher:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Merge git conflict markers in sbzr.txt (Rime userdb format).
+Merge git conflict markers in pinyin.txt (Rime userdb format).
 Entries with the same (word, code) key are merged by summing their counts.
 Unique entries from either side are preserved.
 """
@@ -79,7 +79,7 @@ def merge_conflict(path: Path):
 if __name__ == "__main__":
     root = Path(__file__).parent.parent
     targets = [Path(a) for a in sys.argv[1:]] or [
-        root / "sbzr.txt",
+        root / "pinyin.txt",
         root / "jaroomaji.txt",
     ]
     for target in targets:
