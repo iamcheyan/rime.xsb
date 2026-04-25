@@ -43,7 +43,7 @@ speller:
   delimiter: " '"
 
 translator:
-  dictionary: sbzr.chrome.extension/dicts.en/easy_en
+  dictionary: easy_en
   enable_user_dict: false
   enable_sentence: false
   enable_completion: true

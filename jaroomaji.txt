@@ -2,7 +2,7 @@
 #@/db_name	jaroomaji
 #@/db_type	tabledb
 #@/rime_version	1.13.1
-#@/tick	388
+#@/tick	398
 ー	-	1
 ーいる	- i ru	2
 ーいっっ	- i xtu xtu	3
@@ -78,8 +78,10 @@ de	de	2
 確認	ka ku ni nn	1
 完了	ka nn ryo u	1
 感想	ka nn so u	1
-刑	ke i	11
+刑	ke i	13
+県	ke nn	0
 件数	ke nn su u	1
+県っ	ke nn xtu	1
 機能	ki no u	6
 この	ko no	2
 更新	ko u si nn	8
@@ -141,10 +143,10 @@ de	de	2
 浮い	u i	1
 私	wa ta si	1
 を	wo	1
-っ	xtu	127
+っ	xtu	130
 っげ	xtu ge	1
 っけ	xtu ke	1
-っっ	xtu xtu	15
+っっ	xtu xtu	17
 っっ🤫	xtu xtu si xtu	1
 っっっ	xtu xtu xtu	8
 っっっっ	xtu xtu xtu xtu	12
@@ -152,12 +154,13 @@ de	de	2
 っっっっっ	xtu xtu xtu xtu xtu	1
 ざ	za	0
 ゼー	ze -	0
-ゼーい	ze - i	1
+ゼーい	ze - i	2
 ぜげ	ze ge	2
 攻め	ze me	2
 ぜっ	ze xtu	1
 じし	zi si	2
 辞書	zi syo	1
+十	zi xtu	1
 ぞ	zo	0
 ぞっっ	zo xtu xtu	1
 じゃない	zya na i	0
